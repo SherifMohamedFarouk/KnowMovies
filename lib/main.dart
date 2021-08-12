@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knoviess/ui/uis.dart';
+import 'package:knovies/ui/uis.dart';
 
 void main() {
   runApp(MyApp());
