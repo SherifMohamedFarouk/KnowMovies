@@ -37,6 +37,10 @@ dependencies:
   connectivity: ^3.0.6
   # for desgins icons
   material_design_icons_flutter: 5.0.5955-rc.1
+  # for percent_indicator
+  percent_indicator: ^3.0.1
+  # for toggle_switch:
+  toggle_switch: ^1.2.0
 
 
   # The following adds the Cupertino Icons font to your application.

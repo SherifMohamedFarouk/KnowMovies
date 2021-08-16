@@ -9,7 +9,7 @@ class SearchBar extends StatelessWidget {
     return Stack(
       children: [
         Container(width:_screenSize.width ,
-            height: MediaQuery.of(context).size.height*0.25,
+            height: MediaQuery.of(context).size.height*0.15,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(bottomLeft:Radius.circular(200.0) ,bottomRight:Radius.circular(200.0))
@@ -17,10 +17,10 @@ class SearchBar extends StatelessWidget {
 
           ),
         Container(width:_screenSize.width ,
-          height: MediaQuery.of(context).size.height*0.20,
+          height: MediaQuery.of(context).size.height*0.13,
           decoration: BoxDecoration(
-              color: const Color(0xff978597),
-              borderRadius: BorderRadius.only(bottomLeft:Radius.circular(200.0) ,bottomRight:Radius.circular(200.0))
+              color: Colors.grey[800],
+              borderRadius: BorderRadius.only(bottomLeft:Radius.circular(300.0) ,bottomRight:Radius.circular(300.0))
           ),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(100.0,30.0,100.0,20.0),
