@@ -7,7 +7,10 @@ import 'package:logger/logger.dart';
 class GetxControllers extends GetxController {
   var trendingList = TrendingModel().obs;
   var isTrendingLoading = false.obs;
-  var scrollController = ScrollController().obs;
+  var scrollControllerTrendingMovies = ScrollController().obs;
+  var scrollControllerPopularMovies = ScrollController().obs;
+  var scrollControllerTrendingSeries = ScrollController().obs;
+  var scrollControllerPopularSeries = ScrollController().obs;
   var moviesType = "week".obs;
 
 
@@ -30,7 +33,10 @@ class GetxControllers extends GetxController {
 
   @override
   void onClose() {
-    scrollController.value.dispose();
+    scrollControllerTrendingMovies.value.dispose();
+    scrollControllerPopularMovies.value.dispose();
+    scrollControllerTrendingSeries.value.dispose();
+    scrollControllerPopularSeries.value.dispose();
   }
 
   @override
