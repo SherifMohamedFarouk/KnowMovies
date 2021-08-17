@@ -1,10 +1,6 @@
-// To parse this JSON data, do
-//
-//     final trendingModel = trendingModelFromJson(jsonString);
-
 import 'dart:convert';
 
-import 'package:knovies/model/trending_result.dart';
+import 'package:knovies/model/trending/trending_result.dart';
 
 TrendingModel trendingModelFromJson(String str) => TrendingModel.fromJson(json.decode(str));
 
@@ -12,14 +8,14 @@ String trendingModelToJson(TrendingModel data) => json.encode(data.toJson());
 
 class TrendingModel {
   TrendingModel({
-    this.page,
-    this.results,
-    this.totalPages,
-    this.totalResults,
+     this.page,
+     this.results,
+     this.totalPages,
+     this.totalResults,
   });
 
   int ?page;
-  List<Result> ?results;
+  List<Result>? results;
   int ?totalPages;
   int ?totalResults;
 

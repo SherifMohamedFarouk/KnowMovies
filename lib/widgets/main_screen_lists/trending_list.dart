@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:knovies/getx_controller/getx_controllers.dart';
+import 'package:knovies/config/palette.dart';
+import 'package:knovies/model/model.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+
 
 class TrendingList extends StatelessWidget {
   const TrendingList({
@@ -10,34 +12,37 @@ class TrendingList extends StatelessWidget {
     required this.scrollController,
   }) : super(key: key);
 
-  final GetxControllers screenControllers;
+  final List<dynamic>? screenControllers;
   final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[850],
-      height: 230.0,
-      width: MediaQuery.of(context).size.width * 0.91,
-      child: RawScrollbar(
-        thumbColor: Colors.amber,
-        isAlwaysShown: true,
-        controller: scrollController,
-        child: ListView.builder(
-            controller:scrollController ,
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: screenControllers
-                .trendingList.value.results!.length,
-            itemBuilder: (context, index) {
-              final trending = screenControllers
-                  .trendingList.value.results![index];
-              return Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Stack(
+    return InkWell(
+      onTap: () {
+
+      },
+      child: Container(
+        color: Palette.lightGreen,
+        height: 290.0,
+        padding: const EdgeInsets.only(top: 30) ,
+        width: MediaQuery.of(context).size.width * 0.91,
+        child:RawScrollbar(
+          thumbColor: Colors.amber,
+          isAlwaysShown: true,
+          controller: scrollController,
+          child: ListView.builder(
+              controller:scrollController ,
+              // shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: screenControllers
+                  !.length,
+              itemBuilder: (context, index) {
+                final trending = screenControllers
+                    ![index];
+                return Stack(
                   children: [
                     Container(
-                      height: 230.0,
+                      height: 220.0,
                       width: 150.0,
                       child: Card(
                         elevation: 18.0,
@@ -70,9 +75,9 @@ class TrendingList extends StatelessWidget {
                     )
 
                   ],
-                ),
-              );
-            }),
+                );
+              }),
+        ),
       ),
     );
   }

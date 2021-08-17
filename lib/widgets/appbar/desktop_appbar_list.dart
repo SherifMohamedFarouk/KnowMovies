@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knovies/config/palette.dart';
 
 import '../widgets.dart';
 
@@ -6,7 +7,7 @@ class WindowsAppBarList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: Colors.black54),
+      decoration: BoxDecoration(color: Palette.black),
       width: MediaQuery.of(context).size.width,
       height: 50.0,
       child: Row(

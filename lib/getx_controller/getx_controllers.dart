@@ -1,33 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:knovies/model/trending_model.dart';
+import 'package:knovies/model/popular/popular_movies_model.dart';
+import 'package:knovies/model/popular/popular_series_model.dart';
+import 'package:knovies/model/trending/trending_model.dart';
+import 'package:knovies/services/popular_movies_services.dart';
+import 'package:knovies/services/popular_series_services.dart';
 import 'package:knovies/services/trending_services.dart';
 import 'package:logger/logger.dart';
 
 class GetxControllers extends GetxController {
-  var trendingList = TrendingModel().obs;
-  var isTrendingLoading = false.obs;
-  var scrollControllerTrendingMovies = ScrollController().obs;
-  var scrollControllerPopularMovies = ScrollController().obs;
-  var scrollControllerTrendingSeries = ScrollController().obs;
-  var scrollControllerPopularSeries = ScrollController().obs;
-  var moviesType = "week".obs;
-
-
+  final trendingMoviesList = TrendingModel().obs;
+  final trendingSeriesList = TrendingModel().obs;
+  final popularMoviesList = PopularMoviesModel().obs;
+  final popularSeriesList = PopularSeriesModel().obs;
+  final isTrendingMoviesListLoading = false.obs;
+  final isTrendingSeriesListLoading = false.obs;
+  final isPopularMoviesList = false.obs;
+  final isPopularSeriesList = false.obs;
+  final scrollControllerTrendingMovies = ScrollController().obs;
+  final scrollControllerPopularMovies = ScrollController().obs;
+  final scrollControllerTrendingSeries = ScrollController().obs;
+  final scrollControllerPopularSeries = ScrollController().obs;
+  final moviesType = "week".obs;
 
   @override
   void onInit() {
-    fetchTrendingList(moviesType.value);
+    fetchMoviesTrendingList(moviesType.value,"movies");
+    fetchSeriesTrendingList(moviesType.value,"tv");
+    fetchPopularMoivesist();
+    fetchPopularSeriesList();
   }
 
-  fetchTrendingList(String type) async {
-    isTrendingLoading(true);
-    var list = await PopularServices.fetchTrending(type);
+  fetchMoviesTrendingList(String type,String media) async {
+    isTrendingMoviesListLoading(true);
+    var list = await TrendingServices.fetchTrending(type,media);
+    if (list != null) {
+      trendingMoviesList.value = list;
+      isTrendingMoviesListLoading(false);
+    }
+  }
+
+  fetchSeriesTrendingList(String type,String media) async {
+    isTrendingSeriesListLoading(true);
+    var list = await TrendingServices.fetchTrending(type,media);
+    if (list != null) {
+      trendingSeriesList.value = list;
+      isTrendingSeriesListLoading(false);
+    }
+  }
+  fetchPopularMoivesist() async {
+    isTrendingSeriesListLoading(true);
+    var list = await PopularMoviesServices.fetchPopularMovies();
+    if (list != null) {
+      popularMoviesList.value = list;
+      isTrendingSeriesListLoading(false);
+    }
+  }
+  fetchPopularSeriesList() async {
+    isTrendingSeriesListLoading(true);
+    var list = await PopularSeriesServices.fetchPopularSeries();
     var logger = Logger();
     logger.d(list!.results!.length);
     if (list != null) {
-      trendingList.value = list;
-      isTrendingLoading(false);
+      popularSeriesList.value = list;
+      isTrendingSeriesListLoading(false);
     }
   }
 
@@ -40,8 +76,5 @@ class GetxControllers extends GetxController {
   }
 
   @override
-  void onReady() {
-
-  }
+  void onReady() {}
 }
-

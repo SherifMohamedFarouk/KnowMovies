@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:knovies/config/palette.dart';
 import 'package:knovies/widgets/widgets.dart';
 
 AppBar buildMobileAppBar() {
   return AppBar(
-    backgroundColor: Colors.black54,
+    backgroundColor: Palette.black,
     title: appBarTittle(),
     actions: [
       Padding(

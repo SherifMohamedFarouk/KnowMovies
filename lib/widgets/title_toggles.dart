@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:knovies/config/palette.dart';
 import 'package:knovies/getx_controller/getx_controllers.dart';
 import 'package:logger/logger.dart';
 import 'package:toggle_switch/toggle_switch.dart';
@@ -14,7 +15,8 @@ class TitleWithToggle extends StatelessWidget {
 
   final GetxControllers screenControllers;
   final String title;
-  final bool toggle ;
+  final bool toggle;
+
   final bool movieType;
 
   @override
@@ -32,7 +34,9 @@ class TitleWithToggle extends StatelessWidget {
               const SizedBox(
                 width: 20.0,
               ),
-              toggle?(movieType?moivesToggleSwitch:seriesToggleSwitch):SizedBox.shrink(),
+              toggle
+                  ? (movieType ? moivesToggleSwitch : seriesToggleSwitch)
+                  : SizedBox.shrink(),
             ],
           )),
     );
@@ -47,20 +51,24 @@ class TitleWithToggle extends StatelessWidget {
         [Colors.amber]
       ],
       activeFgColor: Colors.black,
-      inactiveBgColor: Colors.white,
-      inactiveFgColor: Colors.black,
+      inactiveBgColor: Palette.shadeyYellow,
+      inactiveFgColor: Palette.toggleColor,
       initialLabelIndex: 1,
       totalSwitches: 2,
+      animate: true,
       labels: ['Today', 'Weekly'],
       radiusStyle: true,
       onToggle: (index) {
         print('switched to: $index');
-        index == 0 ? screenControllers.fetchTrendingList("day") : screenControllers.fetchTrendingList("week");
+        index == 0
+            ? screenControllers.fetchMoviesTrendingList("day","moive")
+            : screenControllers.fetchMoviesTrendingList("week","moive");
         var logger = Logger();
         logger.d(screenControllers.moviesType.value);
       },
     );
   }
+
   ToggleSwitch get seriesToggleSwitch {
     return ToggleSwitch(
       minWidth: 80.0,
@@ -78,7 +86,9 @@ class TitleWithToggle extends StatelessWidget {
       radiusStyle: true,
       onToggle: (index) {
         print('switched to: $index');
-        index == 0 ? screenControllers.fetchTrendingList("day") : screenControllers.fetchTrendingList("week");
+        index == 0
+            ? screenControllers.fetchSeriesTrendingList("day","tv")
+            : screenControllers.fetchSeriesTrendingList("week","tv");
         var logger = Logger();
         logger.d(screenControllers.moviesType.value);
       },

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:knovies/config/palette.dart';
 import 'package:knovies/getx_controller/getx_controllers.dart';
 import 'package:knovies/widgets/widgets.dart';
 import 'package:logger/logger.dart';
@@ -33,7 +34,8 @@ class TrendingScreen extends StatelessWidget {
               mediaType: "Movies",
             ),
             Container(
-              color: Colors.black,
+              padding: const EdgeInsets.only(bottom: 20.0),
+              color: Palette.black,
                 child: Column(
               children: [
                 TitleWithToggle(
@@ -41,11 +43,11 @@ class TrendingScreen extends StatelessWidget {
                   title: "Trending",
                 ),
                 Obx(() {
-                  return screenControllers.isTrendingLoading.value
+                  return screenControllers.isTrendingMoviesListLoading.value
                       ? Center(
                           child: CircularProgressIndicator(),
                         )
-                      : TrendingList(screenControllers: screenControllers,scrollController: screenControllers.scrollControllerTrendingMovies.value,);
+                      : TrendingList(screenControllers: screenControllers.trendingMoviesList.value.results,scrollController: screenControllers.scrollControllerTrendingMovies.value,);
                 }),
                 const SizedBox(height: 20.0,),
                 TitleWithToggle(
@@ -54,11 +56,11 @@ class TrendingScreen extends StatelessWidget {
                   toggle: false,
                 ),
                 Obx(() {
-                  return screenControllers.isTrendingLoading.value
+                  return screenControllers.isPopularMoviesList.value
                       ? Center(
                     child: CircularProgressIndicator(),
                   )
-                      : TrendingList(screenControllers: screenControllers,scrollController:screenControllers.scrollControllerPopularMovies.value ,);
+                      : TrendingList(screenControllers: screenControllers.popularMoviesList.value.results,scrollController:screenControllers.scrollControllerPopularMovies.value ,);
                 }),
 
               ],
@@ -68,19 +70,20 @@ class TrendingScreen extends StatelessWidget {
               mediaType: "Series",
             ),
             Container(
-                color: Colors.black,
+                color: Palette.black,
                 child: Column(
                   children: [
                     TitleWithToggle(
                       screenControllers: screenControllers,
                       title: "Trending",
+                      movieType: false,
                     ),
                     Obx(() {
-                      return screenControllers.isTrendingLoading.value
+                      return screenControllers.isTrendingSeriesListLoading.value
                           ? Center(
                         child: CircularProgressIndicator(),
                       )
-                          : TrendingList(screenControllers: screenControllers,scrollController: screenControllers.scrollControllerTrendingSeries.value,);
+                          : TrendingList(screenControllers: screenControllers.trendingSeriesList.value.results,scrollController: screenControllers.scrollControllerTrendingSeries.value,);
                     }),
                     const SizedBox(height: 20.0,),
                     TitleWithToggle(
@@ -89,11 +92,11 @@ class TrendingScreen extends StatelessWidget {
                       toggle: false,
                     ),
                     Obx(() {
-                      return screenControllers.isTrendingLoading.value
+                      return screenControllers.isPopularSeriesList.value
                           ? Center(
                         child: CircularProgressIndicator(),
                       )
-                          : TrendingList(screenControllers: screenControllers,scrollController:screenControllers.scrollControllerPopularSeries.value ,);
+                          : TrendingList(screenControllers: screenControllers.popularSeriesList.value.results,scrollController:screenControllers.scrollControllerPopularSeries.value ,);
                     }),
 
                   ],
