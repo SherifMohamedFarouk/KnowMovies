@@ -49,21 +49,21 @@ class GetxControllers extends GetxController {
     }
   }
   fetchPopularMoivesist() async {
-    isTrendingSeriesListLoading(true);
+    isPopularMoviesList (true);
     var list = await PopularMoviesServices.fetchPopularMovies();
     if (list != null) {
       popularMoviesList.value = list;
-      isTrendingSeriesListLoading(false);
+      isPopularMoviesList (false);
     }
   }
   fetchPopularSeriesList() async {
-    isTrendingSeriesListLoading(true);
+    isPopularSeriesList(true);
     var list = await PopularSeriesServices.fetchPopularSeries();
     var logger = Logger();
     logger.d(list!.results!.length);
     if (list != null) {
       popularSeriesList.value = list;
-      isTrendingSeriesListLoading(false);
+      isPopularSeriesList(false);
     }
   }
 

@@ -12,7 +12,7 @@ class PopularSeriesServices{
     logger.d(url);
     if (response.statusCode == 200) {
       var jsonString = response.body;
-      logger.d(jsonString );
+      logger.d(jsonString);
       return popularSeriesModelFromJson(jsonString);
     }
 

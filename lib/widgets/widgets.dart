@@ -9,3 +9,4 @@ export 'search_bar.dart';
 export 'appbar/mobile_appbar.dart';
 export 'main_screen_lists/trending_list.dart';
 export 'title_toggles.dart';
+export 'details_widgets/details_image_bar.dart';

@@ -32,7 +32,7 @@ class SearchBar extends StatelessWidget {
                   filled: true,
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(9.0)),
-                  labelText: 'Search for movies and series',
+                  labelText: 'Know your movies',
                   labelStyle: TextStyle(fontSize: 20, color: Colors.black,
 
                   )),

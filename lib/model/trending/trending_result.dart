@@ -102,12 +102,12 @@ final originalLanguageValues = EnumValues({
 });
 
 class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> ?reverseMap;
+  Map<String, dynamic> map;
+  Map<String, dynamic> ?reverseMap;
 
   EnumValues(this.map);
 
-  Map<T, String>? get reverse {
+  Map<String, dynamic>? get reverse {
     if (reverseMap == null) {
       reverseMap = map.map((k, v) => new MapEntry(v, k));
     }

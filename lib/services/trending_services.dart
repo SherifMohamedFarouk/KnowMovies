@@ -17,6 +17,8 @@ class TrendingServices{
       return trendingModelFromJson(jsonString);
     }
 
+
+
   }
 
 }
