@@ -51,7 +51,7 @@ class TrendingScreen extends StatelessWidget {
                               color: Palette.lightGreen,
                               height: 290.0,
                               padding: const EdgeInsets.only(top: 30),
-                              width: MediaQuery.of(context).size.width * 0.91,
+                              width: _screenSize.width * 0.91,
                               child: RawScrollbar(
                                 thumbColor: Colors.amber,
                                 isAlwaysShown: true,
@@ -75,6 +75,7 @@ class TrendingScreen extends StatelessWidget {
                                       return TrendingList(
                                           id: trending.id,
                                           image: trending.posterPath,
+                                          backImage:trending.backdropPath,
                                           rating: trending.voteAverage);
                                     }),
                               ),
@@ -97,7 +98,7 @@ class TrendingScreen extends StatelessWidget {
                               color: Palette.lightGreen,
                               height: 290.0,
                               padding: const EdgeInsets.only(top: 30),
-                              width: MediaQuery.of(context).size.width * 0.91,
+                              width: _screenSize.width * 0.91,
                               child: RawScrollbar(
                                 thumbColor: Colors.amber,
                                 isAlwaysShown: true,
@@ -121,6 +122,7 @@ class TrendingScreen extends StatelessWidget {
                                       return TrendingList(
                                           id: trending.id,
                                           image: trending.posterPath,
+                                          backImage:trending.backdropPath,
                                           rating: trending.voteAverage);
                                     }),
                               ),
@@ -152,7 +154,7 @@ class TrendingScreen extends StatelessWidget {
                               color: Palette.lightGreen,
                               height: 290.0,
                               padding: const EdgeInsets.only(top: 30),
-                              width: MediaQuery.of(context).size.width * 0.91,
+                              width: _screenSize.width * 0.91,
                               child: RawScrollbar(
                                 thumbColor: Colors.amber,
                                 isAlwaysShown: true,
@@ -176,6 +178,7 @@ class TrendingScreen extends StatelessWidget {
                                       return TrendingList(
                                           id: trending.id,
                                           image: trending.posterPath,
+                                          backImage:trending.backdropPath,
                                           rating: trending.voteAverage);
                                     }),
                               ),
@@ -198,7 +201,7 @@ class TrendingScreen extends StatelessWidget {
                               color: Palette.lightGreen,
                               height: 290.0,
                               padding: const EdgeInsets.only(top: 30),
-                              width: MediaQuery.of(context).size.width * 0.91,
+                              width: _screenSize.width * 0.91,
                               child: RawScrollbar(
                                 thumbColor: Colors.amber,
                                 isAlwaysShown: true,
@@ -222,6 +225,7 @@ class TrendingScreen extends StatelessWidget {
                                       return TrendingList(
                                           id: trending.id,
                                           image: trending.posterPath,
+                                          backImage:trending.backdropPath,
                                           rating: trending.voteAverage);
                                     }),
                               ),

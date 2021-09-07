@@ -7,10 +7,11 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TrendingList extends StatelessWidget {
   const TrendingList(
-      {Key? key, required this.id, required this.image, required this.rating})
+      {Key? key, required this.id, required this.image,required this.backImage, required this.rating})
       : super(key: key);
   final int? id;
   final String?image;
+  final String?backImage;
 
   final double? rating;
 
@@ -18,7 +19,7 @@ class TrendingList extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(() => DetailsScreen(mediaId: id,mediaImage: image,));
+        Get.to(() => DetailsScreen(mediaId: id,mediaImage: image,mediaBackImage: backImage,));
       },
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),

@@ -78,8 +78,8 @@ class TitleWithToggle extends StatelessWidget {
         [Colors.amber]
       ],
       activeFgColor: Colors.black,
-      inactiveBgColor: Colors.white,
-      inactiveFgColor: Colors.black,
+      inactiveBgColor: Palette.shadeyYellow,
+      inactiveFgColor: Palette.toggleColor,
       initialLabelIndex: 1,
       totalSwitches: 2,
       labels: ['Today', 'Weekly'],
