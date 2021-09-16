@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:knovies/model/details/cast.dart';
 import 'package:knovies/model/details/images.dart';
 import 'package:knovies/model/details/videos.dart';

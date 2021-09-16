@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:knovies/model/popular/popular_movies_model.dart';
 import 'package:knovies/model/popular/popular_series_model.dart';
 import 'package:knovies/model/trending/trending_model.dart';
-import 'package:knovies/services/popular_movies_services.dart';
-import 'package:knovies/services/popular_series_services.dart';
-import 'package:knovies/services/trending_services.dart';
+import 'package:knovies/services/popular_trending_page/popular_movies_services.dart';
+import 'package:knovies/services/popular_trending_page/popular_series_services.dart';
+import 'package:knovies/services/popular_trending_page/trending_services.dart';
 import 'package:logger/logger.dart';
 
 class GetxControllers extends GetxController {
