@@ -3,6 +3,8 @@ import 'package:knovies/model/details/cast.dart';
 import 'package:knovies/model/details/images.dart';
 import 'package:knovies/model/details/videos.dart';
 
+import 'external_ids.dart';
+
 DetailsMoviesModel detailsMoviesModelFromJson(String str) => DetailsMoviesModel.fromJson(json.decode(str));
 
 String detailsMoviesModelToJson(DetailsMoviesModel data) => json.encode(data.toJson());
@@ -36,6 +38,7 @@ class DetailsMoviesModel {
     this.videos,
     this.credits,
     this.images,
+    this.externalIds,
   });
 
   final bool? adult;
@@ -65,6 +68,8 @@ class DetailsMoviesModel {
   final Videos? videos;
   final Credits? credits;
   final Images? images;
+  final ExternalIds? externalIds;
+
 
   factory DetailsMoviesModel.fromJson(Map<String, dynamic> json) => DetailsMoviesModel(
     adult: json["adult"],
@@ -94,6 +99,7 @@ class DetailsMoviesModel {
     videos: Videos.fromJson(json["videos"]),
     credits: Credits.fromJson(json["credits"]),
     images: Images.fromJson(json["images"]),
+    externalIds: ExternalIds.fromJson(json["external_ids"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -124,6 +130,7 @@ class DetailsMoviesModel {
     "videos": videos!.toJson(),
     "credits": credits!.toJson(),
     "images": images!.toJson(),
+    "external_ids": externalIds!.toJson(),
   };
 }
 

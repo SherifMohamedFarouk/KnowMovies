@@ -1,11 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:knovies/model/details/details_moives_model.dart';
+import 'package:knovies/widgets/details_widgets/details_description.dart';
 
 class DetailsImage extends StatelessWidget {
   final String backImage;
   final String image;
   final String description;
   final String name;
+  final List<Genre> genres;
 
   // final List<String> genres;
 
@@ -14,7 +17,7 @@ class DetailsImage extends StatelessWidget {
       required this.backImage,
       required this.image,
       required this.description,
-      required this.name})
+      required this.name, required this.genres, })
       : super(key: key);
 
   @override
@@ -47,30 +50,7 @@ class DetailsImage extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-          child: Column(
-            children: [
-              Text(name, style: TextStyle(fontSize: 20.0)),
-              const SizedBox(
-                height: 5.0,
-              ),
-              Text(
-                "Overview",
-                style: TextStyle(fontSize: 20.0, color: Colors.blue),
-              ),
-              const SizedBox(
-                height: 5.0,
-              ),
-              Container(
-                child: Text(
-                  description,
-                  style: TextStyle(fontSize: 20.0),
-                ),
-                width: _screenSize.width*.85,
-              ),
-            ],
-          ),
-        )
+        DetailsDescription(name: name, description: description, screenSize: _screenSize.width,genres:genres)
       ],
     );
   }

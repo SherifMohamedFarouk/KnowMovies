@@ -2,23 +2,26 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knovies/config/palette.dart';
+import 'package:knovies/getx_controller/getx_details.dart';
 import 'package:knovies/ui/details_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TrendingList extends StatelessWidget {
   const TrendingList(
-      {Key? key, required this.id, required this.image,required this.backImage, required this.rating})
+      {Key? key, required this.id, required this.image,required this.backImage, required this.rating,required this.screenControllers,required this.mediaType})
       : super(key: key);
   final int? id;
   final String?image;
   final String?backImage;
-
+  final GetXDetails screenControllers;
   final double? rating;
+  final String mediaType;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        mediaType != "tv"?screenControllers.fetchDetailsMovies(id):screenControllers.fetchDetailsSeries(id);
         Get.to(() => DetailsScreen(mediaId: id,mediaImage: image,mediaBackImage: backImage,));
       },
       child: Padding(

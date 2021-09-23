@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knovies/config/palette.dart';
 import 'package:knovies/getx_controller/getx_controllers.dart';
+import 'package:knovies/getx_controller/getx_details.dart';
 import 'package:knovies/widgets/widgets.dart';
 import 'package:logger/logger.dart';
 
 class TrendingScreen extends StatelessWidget {
   final GetxControllers screenControllers = Get.put(GetxControllers());
+  final GetXDetails getXDetails = Get.put(GetXDetails());
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +74,10 @@ class TrendingScreen extends StatelessWidget {
                                       return TrendingList(
                                           id: trending.id,
                                           image: trending.posterPath,
-                                          backImage:trending.backdropPath,
-                                          rating: trending.voteAverage);
+                                          backImage: trending.backdropPath,
+                                          rating: trending.voteAverage,
+                                          mediaType: "moive",
+                                          screenControllers: getXDetails);
                                     }),
                               ),
                             );
@@ -119,8 +123,10 @@ class TrendingScreen extends StatelessWidget {
                                       return TrendingList(
                                           id: trending.id,
                                           image: trending.posterPath,
-                                          backImage:trending.backdropPath,
-                                          rating: trending.voteAverage);
+                                          backImage: trending.backdropPath,
+                                          rating: trending.voteAverage,
+                                          mediaType: "moive",
+                                          screenControllers: getXDetails);
                                     }),
                               ),
                             );
@@ -175,8 +181,10 @@ class TrendingScreen extends StatelessWidget {
                                       return TrendingList(
                                           id: trending.id,
                                           image: trending.posterPath,
-                                          backImage:trending.backdropPath,
-                                          rating: trending.voteAverage);
+                                          backImage: trending.backdropPath,
+                                          rating: trending.voteAverage,
+                                          mediaType: "tv",
+                                          screenControllers: getXDetails);
                                     }),
                               ),
                             );
@@ -222,8 +230,10 @@ class TrendingScreen extends StatelessWidget {
                                       return TrendingList(
                                           id: trending.id,
                                           image: trending.posterPath,
-                                          backImage:trending.backdropPath,
-                                          rating: trending.voteAverage);
+                                          backImage: trending.backdropPath,
+                                          rating: trending.voteAverage,
+                                          mediaType: "tv",
+                                          screenControllers: getXDetails);
                                     }),
                               ),
                             );

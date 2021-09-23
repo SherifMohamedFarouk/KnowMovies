@@ -28,21 +28,24 @@ class DetailsScreen extends StatelessWidget {
         drawer: Drawer(
           child: DrawerWidgets(),
         ),
-        body:Obx((){
-          return getXDetails.isDetailsSeriesListLoading.value?
+        body:SingleChildScrollView(
+          child: Obx((){
+            return getXDetails.isDetailsMoviesListLoading.value?
      Center(child: CircularProgressIndicator(),):
-          DetailsImage(
-            backImage: "https://www.themoviedb.org/t/p/w220_and_h330_face/${mediaBackImage}",
-            image:"https://www.themoviedb.org/t/p/w220_and_h330_face/${mediaImage}" ,
-            description:getXDetails.detailsSeriesList.value.overview.toString() ,
-            name: getXDetails.detailsSeriesList.value.name.toString(),
-            // genres: [
-            //   getXDetails.detailsSeriesList.value.genres![0],
-            //   getXDetails.detailsSeriesList.value.videos!.results![0].name.toString());
-            // ],
+            DetailsImage(
+              backImage: "https://www.themoviedb.org/t/p/w220_and_h330_face/${mediaBackImage}",
+              image:"https://www.themoviedb.org/t/p/w220_and_h330_face/${mediaImage}" ,
+              name: getXDetails.detailsMoviesList.value.title.toString(),
+              description:getXDetails.detailsMoviesList.value.overview.toString() ,
+              genres:getXDetails.detailsMoviesList.value.genres!,
+              // genres: [
+              //   getXDetails.detailsSeriesList.value.genres![0],
+              //   getXDetails.detailsSeriesList.value.videos!.results![0].name.toString());
+              // ],
 
-          );
-    }));
+            );
+    }),
+        ));
 
     // getXDetails.detailsSeriesList.value.videos!.results!.length.toString());
   }

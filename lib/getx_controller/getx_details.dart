@@ -14,13 +14,11 @@ class GetXDetails extends GetxController{
 
   @override
   void onInit() {
-    fetchDetailsMovies();
-    fetchDetailsSeries();
   }
 
-  fetchDetailsMovies() async {
+  fetchDetailsMovies(id) async {
     isDetailsMoviesListLoading (true);
-    var list = await DetailsMoviesServices.fetchDetailsMovies();
+    var list = await DetailsMoviesServices.fetchDetailsMovies(id);
     var logger = Logger();
     logger.d(list!.id);
     if (list != null) {
@@ -28,9 +26,9 @@ class GetXDetails extends GetxController{
       isDetailsMoviesListLoading (false);
     }
   }
-  fetchDetailsSeries() async {
+  fetchDetailsSeries(id) async {
     isDetailsSeriesListLoading (true);
-    var list = await DetailsSeriesServices.fetchDetailsSeries();
+    var list = await DetailsSeriesServices.fetchDetailsSeries(id);
     var logger = Logger();
     logger.d(list!.id);
     if (list != null) {

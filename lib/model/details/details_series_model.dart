@@ -3,6 +3,8 @@ import 'package:knovies/model/details/cast.dart';
 import 'package:knovies/model/details/images.dart';
 import 'package:knovies/model/details/videos.dart';
 
+import 'external_ids.dart';
+
 DetailsSeriesModel detailsSeriesModelFromJson(String str) => DetailsSeriesModel.fromJson(json.decode(str));
 
 String detailsSeriesModelToJson(DetailsSeriesModel data) => json.encode(data.toJson());
@@ -43,13 +45,14 @@ class DetailsSeriesModel {
     this.videos,
     this.credits,
     this.images,
+    this.externalIds,
   });
 
   final String? backdropPath;
   final List<dynamic>? createdBy;
   final List<dynamic>? episodeRunTime;
   final DateTime? firstAirDate;
-  final List<dynamic>? genres;
+  final List<Genre> ?genres;
   final String? homepage;
   final int? id;
   final bool? inProduction;
@@ -79,13 +82,14 @@ class DetailsSeriesModel {
   final Videos? videos;
   final Credits? credits;
   final Images? images;
+  final ExternalIds? externalIds;
 
   factory DetailsSeriesModel.fromJson(Map<String, dynamic> json) => DetailsSeriesModel(
     backdropPath: json["backdrop_path"],
     createdBy: List<dynamic>.from(json["created_by"].map((x) => x)),
     episodeRunTime: List<dynamic>.from(json["episode_run_time"].map((x) => x)),
     firstAirDate: DateTime.parse(json["first_air_date"]),
-    genres: List<dynamic>.from(json["genres"].map((x) => x)),
+    genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
     homepage: json["homepage"],
     id: json["id"],
     inProduction: json["in_production"],
@@ -115,6 +119,7 @@ class DetailsSeriesModel {
     videos: Videos.fromJson(json["videos"]),
     credits: Credits.fromJson(json["credits"]),
     images: Images.fromJson(json["images"]),
+    externalIds: ExternalIds.fromJson(json["external_ids"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -122,7 +127,7 @@ class DetailsSeriesModel {
     "created_by": List<dynamic>.from(createdBy!.map((x) => x)),
     "episode_run_time": List<dynamic>.from(episodeRunTime!.map((x) => x)),
     "first_air_date": "${firstAirDate!.year.toString().padLeft(4, '0')}-${firstAirDate!.month.toString().padLeft(2, '0')}-${firstAirDate!.day.toString().padLeft(2, '0')}",
-    "genres": List<dynamic>.from(genres!.map((x) => x)),
+    "genres": List<dynamic>.from(genres!.map((x) => x.toJson())),
     "homepage": homepage,
     "id": id,
     "in_production": inProduction,
@@ -152,6 +157,26 @@ class DetailsSeriesModel {
     "videos": videos!.toJson(),
     "credits": credits!.toJson(),
     "images": images!.toJson(),
+    "external_ids": externalIds!.toJson(),
+  };
+}
+class Genre {
+  Genre({
+    required this.id,
+    required this.name,
+  });
+
+  final int id;
+  final String name;
+
+  factory Genre.fromJson(Map<String, dynamic> json) => Genre(
+    id: json["id"],
+    name: json["name"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
   };
 }
 

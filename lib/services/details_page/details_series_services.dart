@@ -6,9 +6,11 @@ import 'package:logger/logger.dart';
 
 class DetailsSeriesServices{
   static var client =http.Client();
+  String id;
+  DetailsSeriesServices({required this.id});
 
-  static Future<DetailsSeriesModel?> fetchDetailsSeries() async{
-    var url= Uri.parse("https://api.themoviedb.org/3/tv/91363?api_key=df3b5f4967782c690e9e21861634f917&append_to_response=videos,credits,images,");
+  static Future<DetailsSeriesModel?> fetchDetailsSeries(id) async{
+    var url= Uri.parse("https://api.themoviedb.org/3/tv/${id}?api_key=df3b5f4967782c690e9e21861634f917&append_to_response=videos,credits,images,external_ids");
     var response = await client.get(url);
     var logger = Logger();
     logger.d(url);
