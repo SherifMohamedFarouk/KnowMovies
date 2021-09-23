@@ -35,7 +35,7 @@ class PopularSeriesModel {
 class Result {
   Result({
      this.backdropPath,
-     this.firstAirDate,
+     // this.firstAirDate,
      this.genreIds,
      this.id,
      this.name,
@@ -50,7 +50,6 @@ class Result {
   });
 
   final String? backdropPath;
-  final DateTime? firstAirDate;
   final List<int>? genreIds;
   final int? id;
   final String? name;
@@ -65,7 +64,7 @@ class Result {
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
     backdropPath: json["backdrop_path"] == null ? null : json["backdrop_path"],
-    firstAirDate: DateTime.parse(json["first_air_date"]),
+    // firstAirDate: DateTime.parse(json["first_air_date"]),
     genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
     id: json["id"],
     name: json["name"],
@@ -81,7 +80,6 @@ class Result {
 
   Map<String, dynamic> toJson() => {
     "backdrop_path": backdropPath == null ? null : backdropPath,
-    "first_air_date": "${firstAirDate!.year.toString().padLeft(4, '0')}-${firstAirDate!.month.toString().padLeft(2, '0')}-${firstAirDate!.day.toString().padLeft(2, '0')}",
     "genre_ids": List<dynamic>.from(genreIds!.map((x) => x)),
     "id": id,
     "name": name,

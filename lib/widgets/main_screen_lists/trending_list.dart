@@ -32,7 +32,7 @@ class TrendingList extends StatelessWidget {
                 elevation: 18.0,
                 child: image != null ? CachedNetworkImage(
                   imageUrl:
-                      "https://www.themoviedb.org/t/p/original/${image}",
+                      "https://www.themoviedb.org/t/p/w220_and_h330_face/${image}",
                 ):Image.asset('assets/image-not-found.png',),
               ),
             ),

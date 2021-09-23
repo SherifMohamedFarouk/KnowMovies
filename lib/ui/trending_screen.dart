@@ -1,12 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knovies/config/palette.dart';
 import 'package:knovies/getx_controller/getx_controllers.dart';
 import 'package:knovies/widgets/widgets.dart';
 import 'package:logger/logger.dart';
-import 'package:percent_indicator/percent_indicator.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 class TrendingScreen extends StatelessWidget {
   final GetxControllers screenControllers = Get.put(GetxControllers());

@@ -4,34 +4,74 @@ import 'package:flutter/material.dart';
 class DetailsImage extends StatelessWidget {
   final String backImage;
   final String image;
+  final String description;
+  final String name;
 
-  const DetailsImage({Key? key, required this.backImage, required this.image})
+  // final List<String> genres;
+
+  const DetailsImage(
+      {Key? key,
+      required this.backImage,
+      required this.image,
+      required this.description,
+      required this.name})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
-    return Container(
-      height: _screenSize.height * 0.45,
-      width: _screenSize.width,
-      decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.1),
-        image: DecorationImage(
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.2), BlendMode.dstATop),
-            image: CachedNetworkImageProvider(backImage)),
-      ),
-      child: Row(
-        children: [
-          CachedNetworkImage(
-            height: _screenSize.height * 0.35,
-            width: _screenSize.width * 0.50,
-            imageUrl: image,
+    return Column(
+      children: [
+        Container(
+          height: _screenSize.height * 0.45,
+          width: _screenSize.width,
+          decoration: BoxDecoration(
+            color: Colors.blue.withOpacity(0.1),
+            image: DecorationImage(
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.2), BlendMode.dstATop),
+                image: CachedNetworkImageProvider(backImage)),
           ),
-          Text("hey")
-        ],
-      ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  CachedNetworkImage(
+                    height: _screenSize.height * 0.35,
+                    width: _screenSize.width * 0.50,
+                    imageUrl: image,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          child: Column(
+            children: [
+              Text(name, style: TextStyle(fontSize: 20.0)),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Text(
+                "Overview",
+                style: TextStyle(fontSize: 20.0, color: Colors.blue),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Container(
+                child: Text(
+                  description,
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                width: _screenSize.width*.85,
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }

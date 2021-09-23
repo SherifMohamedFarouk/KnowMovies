@@ -12,6 +12,8 @@ class TrendingServices{
   static Future<TrendingModel?> fetchTrending(type ,media) async{
     var url= Uri.parse("https://api.themoviedb.org/3/trending/${media.toString()}/${type.toString()}?api_key=df3b5f4967782c690e9e21861634f917");
     var response = await client.get(url);
+    var logger = Logger();
+    logger.d(url);
     if (response.statusCode == 200) {
       var jsonString = response.body;
       return trendingModelFromJson(jsonString);

@@ -21,12 +21,11 @@ class GetxControllers extends GetxController {
   final scrollControllerPopularMovies = ScrollController().obs;
   final scrollControllerTrendingSeries = ScrollController().obs;
   final scrollControllerPopularSeries = ScrollController().obs;
-  final moviesType = "week".obs;
 
   @override
   void onInit() {
-    fetchMoviesTrendingList(moviesType.value,"movies");
-    fetchSeriesTrendingList(moviesType.value,"tv");
+    fetchMoviesTrendingList("week","movie");
+    fetchSeriesTrendingList("week","tv");
     fetchPopularMoivesist();
     fetchPopularSeriesList();
   }
@@ -59,8 +58,6 @@ class GetxControllers extends GetxController {
   fetchPopularSeriesList() async {
     isPopularSeriesList(true);
     var list = await PopularSeriesServices.fetchPopularSeries();
-    var logger = Logger();
-    logger.d(list!.results!.length);
     if (list != null) {
       popularSeriesList.value = list;
       isPopularSeriesList(false);

@@ -28,9 +28,22 @@ class DetailsScreen extends StatelessWidget {
         drawer: Drawer(
           child: DrawerWidgets(),
         ),
-        body: DetailsImage(
-          backImage: "https://www.themoviedb.org/t/p/original/${mediaBackImage}",
-          image:"https://www.themoviedb.org/t/p/original/${mediaImage}" ,
-        ));
+        body:Obx((){
+          return getXDetails.isDetailsSeriesListLoading.value?
+     Center(child: CircularProgressIndicator(),):
+          DetailsImage(
+            backImage: "https://www.themoviedb.org/t/p/w220_and_h330_face/${mediaBackImage}",
+            image:"https://www.themoviedb.org/t/p/w220_and_h330_face/${mediaImage}" ,
+            description:getXDetails.detailsSeriesList.value.overview.toString() ,
+            name: getXDetails.detailsSeriesList.value.name.toString(),
+            // genres: [
+            //   getXDetails.detailsSeriesList.value.genres![0],
+            //   getXDetails.detailsSeriesList.value.videos!.results![0].name.toString());
+            // ],
+
+          );
+    }));
+
+    // getXDetails.detailsSeriesList.value.videos!.results!.length.toString());
   }
 }

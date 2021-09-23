@@ -61,10 +61,8 @@ class TitleWithToggle extends StatelessWidget {
       onToggle: (index) {
         print('switched to: $index');
         index == 0
-            ? screenControllers.fetchMoviesTrendingList("day","moive")
-            : screenControllers.fetchMoviesTrendingList("week","moive");
-        var logger = Logger();
-        logger.d(screenControllers.moviesType.value);
+            ? screenControllers.fetchMoviesTrendingList("day","movie")
+            : screenControllers.fetchMoviesTrendingList("week","movie");
       },
     );
   }
@@ -89,8 +87,6 @@ class TitleWithToggle extends StatelessWidget {
         index == 0
             ? screenControllers.fetchSeriesTrendingList("day","tv")
             : screenControllers.fetchSeriesTrendingList("week","tv");
-        var logger = Logger();
-        logger.d(screenControllers.moviesType.value);
       },
     );
   }

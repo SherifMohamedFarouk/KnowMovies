@@ -8,8 +8,6 @@ class PopularMoviesServices{
   static Future<PopularMoviesModel?> fetchPopularMovies() async{
     var url= Uri.parse("https://api.themoviedb.org/3/movie/popular?api_key=df3b5f4967782c690e9e21861634f917&language=en-US&page=1");
     var response = await client.get(url);
-    var logger = Logger();
-    logger.d(url);
     if (response.statusCode == 200) {
       var jsonString = response.body;
       return popularMoviesModelFromJson(jsonString);
