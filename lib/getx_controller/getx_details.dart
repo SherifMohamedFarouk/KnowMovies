@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:knovies/model/details/details_moives_model.dart';
 import 'package:knovies/model/details/details_series_model.dart';
@@ -10,6 +11,7 @@ class GetXDetails extends GetxController{
   final detailsSeriesList = DetailsSeriesModel().obs;
   final isDetailsMoviesListLoading = false.obs;
   final isDetailsSeriesListLoading = false.obs;
+  final scrollControllerCast = ScrollController().obs;
 
 
   @override
@@ -39,7 +41,7 @@ class GetXDetails extends GetxController{
 
   @override
   void onClose() {
-
+ scrollControllerCast.value.dispose();
   }
 
   @override
